@@ -60,13 +60,55 @@ func main() {
 	//
 	//比如 hello ，对照 ascii 编码表，每个字母对应的编号是：104,101,108,108,111
 
-	var mystr01 string = "hello"
-	var mystr02 [5]byte = [5]byte{104, 101, 108, 108, 111}
-	fmt.Printf("mystr01: %s\n", mystr01)
-	fmt.Printf("mystr02: %s", mystr02)
+	//var mystr01 string = "hello"
+	//var mystr02 [5]byte = [5]byte{104, 101, 108, 108, 111}
+	//fmt.Printf("mystr01: %s\n", mystr01)
+	//fmt.Printf("mystr02: %s\n", mystr02)
 	//输出如下，mystr01和mystr02输出一样，说明了string的本质,其实是一个byte数组
 	//mystr01: hello
 	//mystr02: hello
 	//通过以上学习，我们知道字符分为byte和rune，占用的大小不同
 
+	//"hello,中国"，占用几个字节？Go语言的string是用utf-8进行编码的，英文字母占用一个字节，而中文占用3个字节。所以"hello,中国"的长度
+	//为5+1 + (3*2) = 12 个字节
+	//var country string = "hello,中国"
+	//fmt.Println(len(country))
+	//输出 12
+	//以上虽然我都用双引号表示 一个字符串，但这并不是字符串的唯一表示方式。
+	//
+	//除了双引号之外 ，你还可以使用反引号。
+	//
+	//大多情况下，二者并没有区别，但如果你的字符串中有转义字符\ ，这里就要注意了，它们是有区别的。
+	//
+	//使用反引号包裹的字符串，相当于 Python 中的 raw 字符串，会忽略里面的转义。
+	//
+	//比如我想表示 \r\n 这个 字符串，使用双引号是这样写的，这种叫解释型表示法
+	//var mystr01 string = "\\r\\n"
+
+	//而使用反引号,就方便多了，所见即所得，这就叫原生型表示法
+	//var mystr02 string = `\r\n`
+
+	//fmt.Println(mystr01)
+	//fmt.Println(mystr02)
+
+	//输出
+	//\r\n
+	//\r\n
+
+	//如果你仍然想使用解释型的字符串，但是各种转义实在太麻烦了。你可以使用 fmt 的 %q 来还原一下。
+	//var mystr01 string = `\r\n`
+	//fmt.Print(`\r\n`)
+	//fmt.Printf("的解释型字符串是： %q", mystr01)
+	//输出 \r\n的解释型字符串是： "\\r\\n"
+
+	//同时反引号可以不写换行符(没法写)来表示一个多行的字符串。
+
+	var mystr01 = `你好呀！
+我的公众号是：Go编程时光，欢迎大家关注
+`
+	fmt.Println(mystr01)
+
+	//输出
+	//你好呀！
+	//我的公众号是：Go编程时光，欢迎大家关注
 }
