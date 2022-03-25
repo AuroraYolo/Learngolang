@@ -98,14 +98,53 @@ func main() {
 	//在切片时，若不指定第三个数，那么切片终止索引会一直到原数组的最后一个数。而如果指定了第三个数，那么切片终止索引
 	//只会到原数组的该索引值
 
-	myarr := [5]int{1, 2, 3, 4, 5}
-	fmt.Printf("myarr 的长度为：%d，容量为：%d\n", len(myarr), cap(myarr))
+	//myarr := [5]int{1, 2, 3, 4, 5}
+	//fmt.Printf("myarr 的长度为：%d，容量为：%d\n", len(myarr), cap(myarr))
+	//
+	//mysli1 := myarr[1:3]
+	//fmt.Printf("mysli1 的长度为：%d，容量为：%d\n", len(mysli1), cap(mysli1))
+	//fmt.Println(mysli1)
+	//
+	//mysli2 := myarr[1:3:4]
+	//fmt.Printf("mysli2 的长度为：%d，容量为：%d\n", len(mysli2), cap(mysli2))
+	//fmt.Println(mysli2)
 
-	mysli1 := myarr[1:3]
-	fmt.Printf("mysli1 的长度为：%d，容量为：%d\n", len(mysli1), cap(mysli1))
-	fmt.Println(mysli1)
+	//输出
+	//myarr 的长度为：5，容量为：5
+	//mysli1 的长度为：2，容量为：4
+	//[2 3]
+	//mysli2 的长度为：2，容量为：3
+	//[2 3]
 
-	mysli2 := myarr[1:3:4]
-	fmt.Printf("mysli2 的长度为：%d，容量为：%d\n", len(mysli2), cap(mysli2))
-	fmt.Println(mysli2)
+	//2.从头声明赋值
+	//var strList []string
+	//
+	//var numList []string
+	//
+	//var numListEmpty []int
+
+	//3.使用make 函数构造，make函数的格式：make([]Type,size,cap)
+	//这个函数刚好指出了，一个切片具备的三个要素：类型(Type),长度(size),容量(cap)
+
+	//a := make([]int, 2)
+	//b := make([]int, 2, 10)
+	//fmt.Println(a, b)
+	//fmt.Println(len(a), len(b))
+	//fmt.Println(cap(a), cap(b))
+
+	//输出
+	//[0 0] [0 0]
+	//2 2
+	//2 10
+
+	//4.使用和数组一样,偷懒的方法
+
+	a := []int{4: 2}
+	fmt.Println(a)
+	fmt.Println(len(a), cap(a))
+
+	//输出
+	//[0 0 0 0 2]
+	//5 5
+
 }
