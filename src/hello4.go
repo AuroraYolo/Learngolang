@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /**
 数据类型:数组与切片
 */
@@ -139,12 +137,49 @@ func main() {
 
 	//4.使用和数组一样,偷懒的方法
 
-	a := []int{4: 2}
-	fmt.Println(a)
-	fmt.Println(len(a), cap(a))
+	//a := []int{4: 2}
+	//fmt.Println(a)
+	//fmt.Println(len(a), cap(a))
 
 	//输出
 	//[0 0 0 0 2]
 	//5 5
 
+	//关于len和cap的概念,可能不好理解，这里举个列子:
+	//公司名,相当于字面量，也就是变量名
+	//公司里的所有工位，相当于已分配到的内存空间
+	//公司里的员工，相当于元素
+	//cap代表你这个公司最多可以容纳多数员工
+	//len代表你这个公司当前有多少个员工
+
+	//由于切片是引用类型，所以你不对它进行赋值的话，它的零值(默认值)是nil。
+
+	//var myarr []int
+	//fmt.Println(myarr == nil)
+	//
+	//数组与切片有相同点，它们都是可以容纳若干类型相同的元素的容器
+	//也有不同点,数组的容器大小固定，而切片本身是引用类型，它更像是python中的list，我们可以对它append进行元素的添加
+
+	//myarr := []int{1}
+	////追加一个元素
+	//myarr = append(myarr, 2)
+	////追加多个元素
+	//myarr = append(myarr, 3, 4)
+	////追加一个切片,...表示解包，不能省略
+	//myarr = append(myarr, []int{7, 8}...)
+	////在第一个位置插入元素
+	//myarr = append([]int{0}, myarr...)
+	////在中间插入一个切片(两个元素)
+	//myarr = append(myarr[:5], append([]int{5, 6}, myarr[5:]...)...)
+	//fmt.Println(myarr)
+
+	//输出
+	//[0 1 2 3 4 5 6 7 8]
+
+	//var numbers4 = [...]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	//myslice := numbers4[4:6:8]
+	//fmt.Printf("myslice为 %d, 其长度为: %d\n", myslice, len(myslice))
+	//
+	//myslice = myslice[:cap(myslice)]
+	//fmt.Printf("myslice的第四个元素为: %d", myslice[3])
 }
