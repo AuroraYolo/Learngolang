@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /**
 数据类型:字典与布尔类型
 */
@@ -34,5 +36,53 @@ func main() {
 	//scores["chinese"] = 85
 
 	//要注意的是，第一种方法如果拆分称多步(声明，初始化，再赋值),和其他两种有很大的不一样了。相对会毕竟麻烦
-	
+
+	// 声明一个名为 score 的字典
+	//var scores map[string]int
+	//
+	//// 未初始化的 score 的零值为nil，无法直接进行赋值
+	//if scores == nil {
+	//	// 需要使用 make 函数先对其初始化
+	//	scores = make(map[string]int)
+	//}
+	//
+	//scores["chinese"] = 90
+	//fmt.Println(scores)
+	//
+	////字典的相关操作
+	//
+	////添加元素
+	//scores["math"] = 95
+	//
+	////更新元素,若key已存在，则直接更新value
+	//scores["math"] = 100
+	//
+	////读取元素,直接使用[key]即可,如果key不存在,也不报错,会返回其value-type的零值
+	//fmt.Println(scores["math"])
+	//
+	////删除元素,使用delete函数，如果key不存在,delete函数会静默处理,不会报错.
+	//delete(scores, "math")
+	//
+	//fmt.Println(scores)
+
+	//当访问一个不存在的key时，并不会直接报错,而是会返回这个value的零值,如果value的类型是int，就返回0
+
+	//scores := make(map[string]int)
+	//fmt.Println(scores["english"]) //输出0
+
+	//判断key是否存在
+
+	//当key不存在,会返回value-type的零值,所以你不能通过返回的结果是否是零值来判断对应的key是否存在，因为key对应的value值可能恰好就是零值。
+	//其实字典的下标读取可以返回两个值,使用第二个返回值都表示对应的key是否存在,若存在ok为true,若不存在,则ok为false
+
+	scores := map[string]int{"english": 80, "chinese": 85}
+
+	math, ok := scores["math"]
+
+	if ok {
+		fmt.Printf("math 的值是：%d", math)
+	} else {
+		fmt.Println("math不存在")
+	}
+
 }
