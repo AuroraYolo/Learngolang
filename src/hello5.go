@@ -75,14 +75,79 @@ func main() {
 	//当key不存在,会返回value-type的零值,所以你不能通过返回的结果是否是零值来判断对应的key是否存在，因为key对应的value值可能恰好就是零值。
 	//其实字典的下标读取可以返回两个值,使用第二个返回值都表示对应的key是否存在,若存在ok为true,若不存在,则ok为false
 
-	scores := map[string]int{"english": 80, "chinese": 85}
+	//scores := map[string]int{"english": 80, "chinese": 85}
+	//
+	//math, ok := scores["math"]
+	//
+	//if ok {
+	//	fmt.Printf("math 的值是：%d", math)
+	//} else {
+	//	fmt.Println("math不存在")
+	//}
 
-	math, ok := scores["math"]
+	//如何对字典进行循环
+	//Go语言中没有提供类似Python的keys()和values()这样方便的函数，想要获取,你得自己循环.
+	//循环还分3种
 
-	if ok {
-		fmt.Printf("math 的值是：%d", math)
-	} else {
-		fmt.Println("math不存在")
+	//1,获取key和value
+	//scores := map[string]int{"english": 80, "chinese": 85}
+	//
+	//for subject, score := range scores {
+	//	fmt.Printf("key: %s, value: %d\n", subject, score)
+	//}
+
+	//2.只获取key，这里注意不用占用符
+	//scores := map[string]int{"english": 80, "chinese": 85}
+	//
+	//for subject := range scores {
+	//	fmt.Printf("key:%s\n", subject)
+	//}
+
+	//3.只获取value,用一个占位符替代
+
+	//scores := map[string]int{"english": 80, "chinese": 85}
+	//
+	//for _, score := range scores {
+	//	fmt.Printf("value:%d\n", score)
+	//}
+
+	/**
+	1.6.2 布尔类型
+	关于布尔值，无非就两个值:true和false.只是这两个值，在不同的语言里可能不同
+	在php中，真值用true表示,与1相等,假值使用false表示，与0相等
+	而在go中，真值用true表示，不但不与1相等,并且更加严格，不同类型无法进行比较，而假值
+	用false表示，同样与0无法比较
+	*/
+
+	//var male bool = true
+	//fmt.Println(male == 0)
+	//Go中确实不如php那样灵活，bool不能与int直接转换，如果要转换，需要自己实现函数
+
+	//go语言对逻辑值取反使用！符号
+	//go语言使用&& 表示且,用｜｜表示或。并且有短路行为(即左边表达式已经可以确认整个表达式的值,那么右边将不会被求值)
+
+	var age int = 15
+	var gender string = "male"
+
+	//  && 两边的表达式都会执行
+	fmt.Println(age > 18 && gender == "male")
+	// gender == "male" 并不会执行
+	fmt.Println(age < 18 || gender == "male")
+}
+
+/**
+bool转int
+*/
+func bool2int(b bool) int {
+	if b {
+		return 1
 	}
+	return 0
+}
 
+/**
+bool转int
+*/
+func int2bool(b int) bool {
+	return b != 0
 }
