@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /**
 1.8 流程控制:if-else
 
@@ -82,7 +80,7 @@ func main() {
 	1.8.4 高级写法
 	在if里可以写允许先运行一个表达式,取得变量后,在对其进行判断,比如第一个例子里代码也可以写成这样
 	*/
-	if age := 20; age > 18 {
-		fmt.Println("已经成年了")
-	}
+	//if age := 20; age > 18 {
+	//	fmt.Println("已经成年了")
+	//}
 }
