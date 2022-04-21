@@ -66,4 +66,51 @@ func main() {
 	}
 	//输出如下
 	//我是冬天
+
+	/**
+	1.9.3 case条件不能重复
+	*/
+	//错误案例1
+	//gender := "male"
+	//switch gender {
+	//case "male":
+	//	fmt.Println("男性")
+	//case "male":
+	//	fmt.Println("男性")
+	//case "female":
+	//	fmt.Println("女性")
+	//}
+
+	//错误案例2
+	//gender := "male"
+	//switch gender {
+	//case "male", "male":
+	//	fmt.Println("男性")
+	//case "female":
+	//	fmt.Println("女性")
+	//}
+	/**
+	1.9.4 switch后可接函数
+	switch 后面可以接一个函数,只要保证case后的值类型与函数的返回值一致即可
+	*/
+	chinese := 80
+	english := 50
+	math := 100
+	switch getResult(chinese, english, math) {
+	case true:
+		fmt.Println("该同学所有成绩都合格")
+	case false:
+		fmt.Println("该同学有挂科记录")
+	}
+	/**
+	1.9.5 switch 可不接表达式
+	*/
+}
+func getResult(args ...int) bool {
+	for _, i := range args {
+		if i < 60 {
+			return false
+		}
+	}
+	return true
 }
